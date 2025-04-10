@@ -8,7 +8,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.loop_website.rule=Host(`vps108097.serveur-vps.net`)"
       - "traefik.http.routers.loop_website.entrypoints=websecure"
-      - "traefik.http.routers.loop_website.tls.myresolver=letsencrypt"
+      - "traefik.http.routers.loop_website.tls.certresolver=myresolver"
     networks:
       - vps-mds
 
