@@ -7,7 +7,8 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.loop_website.rule=Host(`vps108097.serveur-vps.net`)"
-      - "traefik.http.routers.loop_website.entrypoints=web"
+      - "traefik.http.routers.loop_website.entrypoints=websecure"
+      - "traefik.http.routers.loop_website.tls.myresolver=letsencrypt"
     networks:
       - vps-mds
 
@@ -21,7 +22,6 @@ services:
       - "--entrypoints.web.address=:80"
       - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
       - "--entrypoints.websecure.address=:443"
-      - "--providers.file.directory=/etc/traefik/routing"
       # Activation du /ping pour le healthcheck
       - "--ping=true"
       - "--ping.entrypoint=web"
@@ -42,7 +42,6 @@ services:
       - "443:443"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
-      - "./config:/etc/traefik/routing:rw"
       - "./letsencrypt:/letsencrypt"
     networks:
       - vps-mds
