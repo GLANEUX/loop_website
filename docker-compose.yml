@@ -6,7 +6,7 @@ services:
       - "3000:3000"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.loop_website.rule=Host(`vps108097.serveur-vps.net`)"
+      - "traefik.http.routers.loop_website.rule=Host(`loop-app.fr`)"
       - "traefik.http.routers.loop_website.entrypoints=websecure"
       - "traefik.http.routers.loop_website.tls.certresolver=myresolver"
     networks:
