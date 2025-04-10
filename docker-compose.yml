@@ -3,7 +3,7 @@ services:
     build: .
     container_name: front-end-loop
     ports:
-      -"3000:3000"
+      - "3000:3000"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.loop_website.rule=Host(`vps108097.serveur-vps.net`)"
