@@ -34,7 +34,7 @@ const Navbar: React.FC = () => {
 
         <ul className={`navbar-links ${isOpen ? "active" : ""}`}>
           <li>
-            <Link className="support-btn" href="/Support">
+            <Link className="support-btn" href="/upport">
               Support
             </Link>
           </li>
