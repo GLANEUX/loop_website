@@ -18,11 +18,11 @@ export default function Footer() {
         <div>
           <h4 className="mb-4 font-semibold">Entreprise</h4>
           <ul className="space-y-2">
-            <li>
+            {/* <li>
               <Link href="/Support" className="hover:underline">
                 À propos
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link href="/Mentions-legales" className="hover:underline">
                 Mentions légales
@@ -36,12 +36,12 @@ export default function Footer() {
           <h4 className="mb-4 font-semibold">LOOP</h4>
           <ul className="space-y-2">
             <li>
-              <Link href="/a-propos" className="hover:underline">
+              <Link href="/Support" className="hover:underline">
                 À propos
               </Link>
             </li>
             <li>
-              <Link href="/support" className="hover:underline">
+              <Link href="/Support#FAQ" className="hover:underline">
                 Support
               </Link>
             </li>

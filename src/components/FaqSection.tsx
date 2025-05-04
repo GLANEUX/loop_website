@@ -155,7 +155,7 @@ export default function FAQSection() {
   const toggle = (key: string) => setOpenMap((m) => ({ ...m, [key]: !m[key] }));
 
   return (
-    <section className="bg-[#020d15] text-white py-16 px-6 lg:px-24">
+    <section id="FAQ" className="bg-[#020d15] text-white py-16 px-6 lg:px-24">
       <div className="max-w-4xl mx-auto space-y-12">
         {data.map((section, sIdx) => {
           const hasFaqs = Array.isArray(section.faqs);
