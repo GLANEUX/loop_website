@@ -2,17 +2,18 @@
 import { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // 1. On dit à Next.js d’ignorer les erreurs ESLint pendant le build
+  // 1) Ne plus bloquer le build sur ESLint/TS errors si tu veux
   eslint: {
     ignoreDuringBuilds: true,
   },
-
-  // 2. Si vous voulez aussi ignorer les erreurs TypeScript pendant le build
   typescript: {
     ignoreBuildErrors: true,
   },
 
-  // (le reste de votre config ici…)
+  // 2) Active le mode standalone
+  output: "standalone",
+
+  // …tes autres options ici…
 };
 
 export default nextConfig;
