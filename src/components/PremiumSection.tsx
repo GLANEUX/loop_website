@@ -8,8 +8,7 @@ export default function PremiumSection() {
     <section className="bg-[#020d15] text-white py-16 px-6">
       <div className="max-w-2xl mx-auto text-center space-y-6">
         <h2 className="flex items-center justify-center gap-2 text-3xl md:text-4xl font-bold">
-          <span>🔥</span>
-          Prenez une longueur d'avance avec Loop + !
+          🔥 Prenez une longueur d'avance avec Loop + !
         </h2>
         <p className="text-gray-300 text-base md:text-lg">
           Accédez à une nouvelle dimension : visibilité renforcée, outils

@@ -9,7 +9,7 @@ export default function CommunitySection() {
       {/* Title + intro */}
       <div className="max-w-2xl mx-auto text-center">
         <h2 className="flex items-center justify-center text-3xl md:text-4xl font-bold gap-2">
-          <span className="text-2xl">🎤</span>
+         🎤
           Une communauté pour les musiciens d’aujourd’hui.
         </h2>
         <p className="mt-4 text-gray-300">

@@ -3,7 +3,6 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Instagram } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -58,7 +57,12 @@ export default function Footer() {
             className="mb-4"
             aria-label="Instagram"
           >
-            <Instagram size={24} className="hover:text-gray-300 transition" />
+            <Image
+              src="/instagram.svg"
+              alt="Instagram"
+              width={24}
+              height={24}
+            />
           </a>
           <a href="mailto:loop@gmail.com" className="text-sm hover:underline">
             loop@gmail.com

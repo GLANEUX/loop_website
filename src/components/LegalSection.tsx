@@ -1,4 +1,6 @@
 // src/components/LegalSection.tsx
+"use client";
+import Link from "next/link";
 export default function LegalSection() {
   return (
     <section className="bg-[#020d15] text-white py-16 px-6 lg:px-24">
@@ -54,12 +56,12 @@ export default function LegalSection() {
               Informatique et Libertés » et au RGPD, vous pouvez accéder à vos
               données, demander leur rectification ou leur suppression en nous
               écrivant à{" "}
-              <a
+              <Link
                 href="mailto:contact@loop-app.fr"
                 className="underline hover:text-white"
               >
                 contact@loop-app.fr
-              </a>
+              </Link>
               .
             </p>
           </div>

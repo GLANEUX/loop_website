@@ -31,7 +31,7 @@ export async function GET() {
 // POST : ajoute un e-mail (envoyé en JSON { email: "foo@bar" })
 export async function POST(request: Request) {
   const { email } = (await request.json()) as { email?: string };
-  if (!email || !email.includes("@")) {
+  if (!email?.includes("@")) {
     return NextResponse.json({ error: "Email invalide" }, { status: 400 });
   }
 
