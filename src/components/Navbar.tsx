@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { FiMenu, FiX } from "react-icons/fi";
 import "@/components/Navbar.css";
+import Image from "next/image";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,7 +21,12 @@ const Navbar: React.FC = () => {
       <nav className="navbar">
         <div className="navbar-logo">
           <Link href="/">
-            <img src="/LOOP.svg" alt="Logo" />
+            <Image
+              src="/logo_loop_blanc.svg"
+              alt="Loop Logo"
+              width={100}
+              height={24}
+            />
           </Link>
         </div>
 
@@ -34,7 +40,7 @@ const Navbar: React.FC = () => {
 
         <ul className={`navbar-links ${isOpen ? "active" : ""}`}>
           <li>
-            <Link className="support-btn" href="/upport">
+            <Link className="support-btn" href="/Support">
               Support
             </Link>
           </li>
@@ -73,7 +79,7 @@ const Navbar: React.FC = () => {
               notre newsletter pour être tenu·e au courant du lancement.
             </p>
             <Link
-              href="#newsletter"
+              href="/#newsletter"
               className="inline-block bg-[#dd3726] text-white px-5 py-2 rounded-full hover:bg-[#c04b29] transition"
               onClick={() => setShowModal(false)}
             >

@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Loop Website
 
-## Getting Started
+Landing and support site for Loop, the app that connects musicians through intelligent matching, collaborations, and weekly challenges. Built with Next.js 15, React 19, Tailwind CSS 4, and TypeScript.
 
-First, run the development server:
+## Quick start
+
+Requirements: Node.js 20+, npm.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev              # http://localhost:3000 (Turbopack)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Useful scripts:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `npm run build` – production build
+- `npm start` – run the built app
+- `npm run lint` – Next.js/ESLint (build is configured to ignore lint/TS errors; fix locally before shipping)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project overview
 
-## Learn More
+- `src/app` – App Router pages
+  - `/` homepage: hero, intro, community features, premium teaser, newsletter signup
+  - `/Support` page: about, support callout, interactive FAQ
+  - `/Mentions-legales` page: legal notices
+  - `api/newsletter` endpoint (POST/GET) storing emails locally
+- `src/components` – UI sections (Hero, Intro, Community, Premium, Newsletter, About, Support, FAQ, Legal, Navbar/Footer)
+- `public/` – static assets (logos, phone mock, backgrounds, social icons)
+- `data/newsletter.json` – flat-file store for newsletter emails (dev/demo only)
+- `next.config.ts` – standalone output; build ignores lint/TS errors
+- `Dockerfile`, `docker-compose.yml` – container build and Traefik example routing
 
-To learn more about Next.js, take a look at the following resources:
+## Newsletter API (dev/demo)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `POST /api/newsletter` with `{ email }` to add an email (basic `@` validation; deduped).
+- `GET /api/newsletter` returns `{ emails: [...] }`.
+- Persists to `data/newsletter.json`. Ensure the `data` folder is writable. Replace with a real datastore for production.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Styling & UX
 
-## Deploy on Vercel
+- Tailwind CSS 4 via `@import "tailwindcss";` in `src/app/globals.css`, plus custom `Navbar.css`.
+- Global font: Poppins (declared in `globals.css`).
+- The site runs in French; copy lives in the components for easy edits.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Docker
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Build and run the standalone image:
+
+```bash
+docker build -t loop-website .
+docker run -p 3000:3000 loop-website
+```
+
+`docker-compose.yml` includes a Traefik v3 reverse proxy example (TLS/ACME). It expects an external Docker network `vps-mds` and the hostname `loop-app.fr`; adjust to match your infra before use.
+
+## Deployment notes
+
+- `output: "standalone"` is enabled for lighter production images.
+- No env vars are required for local dev. Add your own if you wire a real newsletter backend or analytics.
+- Replace placeholder legal/hosting info in `/Mentions-legales` before going live.

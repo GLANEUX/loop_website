@@ -10,7 +10,14 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto grid grid-cols-3  lg:grid-cols-5 gap-8 items-center">
         {/* Logo */}
         <div className="flex items-center justify-start">
-          <Image src="/LOOP.svg" alt="Loop Logo" width={100} height={24} />
+          <Link href="/">
+            <Image
+              src="/logo_loop_blanc.svg"
+              alt="Loop Logo"
+              width={100}
+              height={24}
+            />
+          </Link>
         </div>
 
         {/* Colonne Entreprise */}
@@ -50,23 +57,51 @@ export default function Footer() {
 
         {/* Contact & Social */}
         <div className="flex flex-col items-center">
-          <a
-            href="https://instagram.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mb-4"
-            aria-label="Instagram"
+          <div className="flex space-x-4 mb-4">
+            <Link
+              href="https://www.instagram.com/loop___app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mb-4"
+              aria-label="Instagram"
+            >
+              <Image
+                src="/instagram.svg"
+                alt="Instagram"
+                width={24}
+                height={24}
+              />
+            </Link>
+            <Link
+              href="https://www.facebook.com/profile.php?id=61583750519200"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mb-4"
+              aria-label="Facebook"
+            >
+              <Image
+                src="/facebook.svg"
+                alt="Facebook"
+                width={24}
+                height={24}
+              />
+            </Link>
+            <Link
+              href="https://www.tiktok.com/@loop___app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mb-4"
+              aria-label="TikTok"
+            >
+              <Image src="/tik-tok.png" alt="TikTok" width={24} height={24} />
+            </Link>
+          </div>
+          <Link
+            href="mailto:loop@gmail.com"
+            className="text-sm hover:underline"
           >
-            <Image
-              src="/instagram.svg"
-              alt="Instagram"
-              width={24}
-              height={24}
-            />
-          </a>
-          <a href="mailto:loop@gmail.com" className="text-sm hover:underline">
             loop@gmail.com
-          </a>
+          </Link>
         </div>
       </div>
     </footer>
