@@ -35,6 +35,7 @@ Useful scripts:
 - `POST /api/newsletter` with `{ email }` to add an email (basic `@` validation; deduped).
 - `GET /api/newsletter` returns `{ emails: [...] }`.
 - Persists to `data/newsletter.json`. Ensure the `data` folder is writable. Replace with a real datastore for production.
+- In production containers, set `NEWSLETTER_DATA_DIR` to a writable path (default: `/data` in the Dockerfile) and mount a volume (see `docker-compose.yml`).
 
 ## Styling & UX
 

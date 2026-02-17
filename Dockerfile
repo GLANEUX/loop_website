@@ -52,11 +52,15 @@ COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
+# Writable data dir for newsletter storage
+RUN mkdir -p /data && chown -R nextjs:nodejs /data
+
 USER nextjs
 
 EXPOSE 3000
 
 ENV PORT=3000
+ENV NEWSLETTER_DATA_DIR=/data
 
 # server.js is created by next build from the standalone output
 # https://nextjs.org/docs/pages/api-reference/next-config-js/output

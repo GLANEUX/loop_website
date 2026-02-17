@@ -4,6 +4,8 @@ services:
     container_name: front-end-loop
     ports:
       - "3000:3000"
+    volumes:
+      - "./data:/data"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.loop_website.rule=Host(`loop-app.fr`)"

@@ -2,8 +2,16 @@ import { NextResponse } from "next/server";
 import { promises as fs } from "fs";
 import path from "path";
 
+export const dynamic = "force-dynamic";
+
 // Chemin vers notre fichier JSON
-const dataDir = path.join(process.cwd(), "data");
+// Permet un override en prod via NEWSLETTER_DATA_DIR (ex: /data dans Docker)
+const configuredDir = process.env.NEWSLETTER_DATA_DIR;
+const dataDir = configuredDir
+  ? path.isAbsolute(configuredDir)
+    ? configuredDir
+    : path.join(process.cwd(), configuredDir)
+  : path.join(process.cwd(), "data");
 const filePath = path.join(dataDir, "newsletter.json");
 
 // Lit le fichier ou renvoie [] si vide
