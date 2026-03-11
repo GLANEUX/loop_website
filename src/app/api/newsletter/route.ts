@@ -17,17 +17,31 @@ const filePath = path.join(dataDir, "newsletter.json");
 // Lit le fichier ou renvoie [] si vide
 async function readEmails(): Promise<string[]> {
   try {
+    console.log("Lecture du fichier newsletter :", filePath);
     const content = await fs.readFile(filePath, "utf8");
     return JSON.parse(content);
-  } catch {
+  } catch (error: any) {
+    if (error.code === 'ENOENT') {
+      console.log("Fichier newsletter non trouvé, retour liste vide.");
+      return [];
+    }
+    console.error("Erreur lors de la lecture des emails :", error);
     return [];
   }
 }
 
 // Écrit la liste mise à jour
 async function writeEmails(emails: string[]) {
-  await fs.mkdir(dataDir, { recursive: true });
-  await fs.writeFile(filePath, JSON.stringify(emails, null, 2), "utf8");
+  try {
+    console.log("Écriture dans le dossier :", dataDir);
+    await fs.mkdir(dataDir, { recursive: true });
+    console.log("Écriture du fichier :", filePath);
+    await fs.writeFile(filePath, JSON.stringify(emails, null, 2), "utf8");
+    console.log("Écriture réussie.");
+  } catch (error) {
+    console.error("Erreur lors de l'écriture des emails :", error);
+    throw error; // On laisse remonter l'erreur pour que le POST renvoie une 500
+  }
 }
 
 // GET : renvoie la liste des e-mails
